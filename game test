@@ -16,27 +16,27 @@ int const HEAL_COST = 4;
 int const RECHARGE_MIN = 6;
 int const RECHARGE_MAX = 8;
 
-void enemyAttack(plrHealth)
+void enemyAttack(int plrHealth)
 {
-    plrHealth -= (rand%(ENEMY_ATK_MAX - ENEMY_ATK_MIN + 1)) + ENEMY_ATK_MIN;
+    plrHealth -= (rand()%(ENEMY_ATK_MAX - ENEMY_ATK_MIN + 1)) + ENEMY_ATK_MIN;
 }
 
-void plrAttack(health)
+void plrAttack(int health)
 {
-    health -= (rand%(ATK_MAX - ATK_MIN + 1)) + ATK_MIN;
+    health -= (rand()%(ATK_MAX - ATK_MIN + 1)) + ATK_MIN;
 }
 
-void heal(plrHealth, mana)
+void heal(int plrHealth, int mana)
 {
-    if(mana => HEAL_COST){
-        health += (rand%(HEAL_MAX - HEAL_MIN + 1)) + HEAL_MIN;
+    if(mana >= HEAL_COST){
+        health += (rand()%(HEAL_MAX - HEAL_MIN + 1)) + HEAL_MIN;
         mana -= HEAL_COST;
     }
 }
 
-void recharge(mana)
+void recharge(int mana)
 {
-    mana += (rand%(RECHARGE_MAX - RECHARGE_MIN + 1)) + RECHARGE_MIN;
+    mana += (rand()%(RECHARGE_MAX - RECHARGE_MIN + 1)) + RECHARGE_MIN;
 }
 
 int main() {
@@ -50,7 +50,10 @@ int main() {
     int health = HP_MAX;
     int mana = MANA_START;
     
+    //Game
+    printf(
+        "Welcome to this game test \nInstructions: \nEach round you will be able to select between 3 moves using number keys as input \n1 for attack \n2 for heal \n3 for recharge \nInput 1 to continue:"
+        );
     
-
     return 0;
 }
