@@ -29,7 +29,7 @@ void plrAttack(int health)
 void heal(int plrHealth, int mana)
 {
     if(mana >= HEAL_COST){
-        health += (rand()%(HEAL_MAX - HEAL_MIN + 1)) + HEAL_MIN;
+        plrHealth += (rand()%(HEAL_MAX - HEAL_MIN + 1)) + HEAL_MIN;
         mana -= HEAL_COST;
     }
 }
