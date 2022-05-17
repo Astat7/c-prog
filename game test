@@ -50,10 +50,51 @@ int main() {
     int health = HP_MAX;
     int mana = MANA_START;
     
-    //Game
+    //Game start
     printf(
-        "Welcome to this game test \nInstructions: \nEach round you will be able to select between 3 moves using number keys as input \n1 for attack \n2 for heal \n3 for recharge \nInput 1 to continue:"
-        );
+        "Welcome to this game test \nInstructions: \nEach round you will be able to select between 3 moves using number keys as input \n1 for attack \n2 for heal (only heals if you have 4 or more mana) \n3 for recharge (recharges mana) \nAnything else to end the game \nInput 1 to continue:"
+    );
+    char startInput = '0';
+    do{
+        startInput = getchar();
+    }while(startInput != '1');
+    
+    int gameLoop = 11;
+    while(gameLoop)
+    {
+        printf("\nEnemy HP = %d \nYour HP = %d \nYour Mana = %d \nInput:",enemyHealth, health, mana);
+        switch(getchar())
+        {
+            case '1':
+            plrAttack(enemyHealth);
+            break;
+            case '2':
+            heal(health, mana);
+            break;
+            case '3':
+            recharge(mana);
+            break;
+            default:
+            gameLoop = 0;
+            health = 0;
+            break;
+        }
+        if(enemyHealth <= 0)
+        {
+            gameLoop = 0;
+            printf("\nEnemy HP = %d \nYour HP = %d \nYour Mana = %d \nYou won", enemyHealth, health, mana);
+            break;
+        }
+        enemyAttack(health);
+        if(health <= 0)
+        {
+            gameLoop = 0;
+            printf("\nEnemy HP = %d \nYour HP = %d \nYour Mana = %d \nYou lost", enemyHealth, health, mana);
+            break;
+        }
+    }
+    
+    
     
     return 0;
 }
