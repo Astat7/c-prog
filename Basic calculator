@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    
+    float x;
+    char z;
+    float y;
+    
+    int loop = 1;
+    
+    while(loop){
+    
+        scanf("%f%c%f", &x, &z, &y);
+        
+        switch(z)
+        {
+            case '+': printf("=%f\n", x + y); break;
+            case '*': printf("=%f\n", x * y); break;
+            case '/': printf("=%f\n", x / y); break;
+            default: loop = 0; break;
+        }
+    }
+    
+    return 0;
+}
