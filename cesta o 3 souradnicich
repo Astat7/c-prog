@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+float getDistance(float xa, float ya, float xb, float yb)
+{
+    float lenghtx = abs(xa-xb);
+    float lenghty = abs(ya-yb);
+    
+    return sqrt((lenghtx * lenghtx)+(lenghty*lenghty));
+}
+
+float getPathLenght(float x[3][2])
+{
+    float segmentA = getDistance(x[0][0], x[0][1], x[1][0], x[1][1]);
+    float segmentB = getDistance(x[1][0], x[1][1], x[2][0], x[2][1]);
+    
+    return segmentA + segmentB;
+}
+
+
+
+
+int main() {
+    float x[3][2] = {{0, 0}, {1, 3}, {2, -4}};
+    printf("path lengs is: %.2f", getPathLenght(x));
+    return 0;
+}
