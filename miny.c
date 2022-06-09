@@ -40,7 +40,7 @@ int uncover(int pole[SIZEX][SIZEY], int mask[SIZEX][SIZEY])
     if(pole[ix][iy] != 9)
     {
     mask[ix][iy] = pole[ix][iy];
-    spread(ix++, iy++, pole, mask);
+    //spread(ix++, iy++, pole, mask);
     return 1;
     }else
     {
